@@ -1,13 +1,12 @@
 'use strict';
 var btc;
-var length;
+var samp_length;
 var pos = 0;
-var fr;
 function waveform(e){
     var output = e.outputBuffer.getChannelData(0);
     for (var i = 0; i < e.outputBuffer.length; i++){
         output[i] = btc[pos];
-        pos = (pos < length) ? pos+1: 0;
+        pos = (pos < samp_length) ? pos+1: 0;
 
     }
 }
@@ -22,15 +21,13 @@ var oscilator = new Pizzicato.Sound({
     }
 });
 
-//get json data - request json at windowonload
-
 window.onload = async function(){
     fetch('http://localhost:4000/btc').then(res=>{
         if (res.ok) return res.json();
         else console.log("BTC req failed: ", res);
     }).then(res => {
         btc = res.vals;
-        length = btc.length;
+        samp_length = btc.length;
     });
 
     //add event listener

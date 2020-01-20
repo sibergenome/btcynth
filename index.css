@@ -1,0 +1,27 @@
+body {
+   background-color:#11121d; 
+}
+#container{
+    display:grid;
+    height:100%;
+}
+#main{
+    margin:auto;
+}
+#button-container{
+    margin:auto;
+    display:table;
+}
+#noise-button{
+    top:50%;
+    margin-bottom:40px
+}
+#text{
+    width:450px;
+    margin-top:15px;
+    font-size:small;
+    font-family:OCR A Std, monospace;
+    color:#eaeaead9;
+    text-align:justify;
+}
+

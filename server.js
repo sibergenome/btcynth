@@ -11,6 +11,9 @@ app.get('/', (req, res)=>{
 .get('/index.js', (req,res)=>{
     res.sendFile(path.resolve(__dirname, 'index.js'));
 })
+.get('/index.css', (req,res)=>{
+    res.sendFile(path.resolve(__dirname, 'index.css'));
+})
 .get('/btc', (req,res)=>{
     res.json(btc_data);
 })

@@ -2,15 +2,24 @@
     <head>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.min.js"></script>
         <script src="./index.js" type="text/javascript"></script> 
+        <link rel="stylesheet" href="./index.css" type="text/css"></link>
         <link rel="icon" href="data:,">
     </head>
-    <body style="background-color:#11121d;">
-        <div id="main" style="display:grid;height:100%;">
-            <div style="margin:auto;">
-                <div style="width:400px;margin-bottom:15px;font-size:small;font-family:OCR A Std, monospace;color:#eaeaead9;">
-               Howdy. I got real bored recently. So I did what any normal person would do and made something absolutely useless: a webpage that samples the bitcoin price index and pipes it into the  browser audiobuffer. Prepare to be disappointed and underwhelmed. 
+    <body>
+        <div id="container">
+            <div id="main">
+                <div id="button-container">
+                    <button type="button" id="noisebutton" style="width:200px;height:70px;font-size:30px;font-family:OCR A Std, monospace">OFF</button>
                 </div>
-            <button type="button" id="noisebutton" style="top:50%;width:100px;height:40px;">OFF</button>
+                <div id="text">
+                    Greetings weary traveller. Ever wondered what historic BTC data sounds like? Me too. Ponder no more. For the curious, study the
+                    <a id="ancient-scripture" 
+                       style="color:#00c3ffc9;"
+                       target="_blank"
+                       href="https://github.com/siberGenom/btcynth">
+                        ancient scripture
+                    </a>.
+                </div>
             </div>
         </div> 
     </body>
