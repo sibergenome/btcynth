@@ -7,7 +7,6 @@ function waveform(e){
     for (var i = 0; i < e.outputBuffer.length; i++){
         output[i] = btc[pos];
         pos = (pos < samp_length) ? pos+1: 0;
-
     }
 }
 var oscilator = new Pizzicato.Sound({

@@ -1,22 +1,29 @@
 body {
-   background-color:#11121d; 
+    background-color: #000000cc;
 }
 #container{
     display:grid;
+    background-color:#11121d; 
     height:100%;
+    width: 75%;
+    margin: auto;
 }
 #main{
+    height: 500px;
     margin:auto;
 }
 #button-container{
-    margin:auto;
+    margin-top: 150px;
+    margin-bottom:auto;
+    margin-left:auto;
+    margin-right:auto;
     display:table;
 }
 #noise-button{
     top:50%;
     margin-bottom:40px
 }
-#text{
+.text{
     width:450px;
     margin-top:15px;
     font-size:small;
@@ -24,4 +31,10 @@ body {
     color:#eaeaead9;
     text-align:justify;
 }
-
+#linkbox{
+    width: 200px;
+    margin-top: auto;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: 20px;
+}
