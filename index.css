@@ -2,8 +2,7 @@ body {
     background-color: #000000cc;
 }
 #container{
-    display:grid;
-    background-color:#11121d; 
+    display: contents;
     height:100%;
     width: 75%;
     margin: auto;
@@ -13,8 +12,8 @@ body {
     margin:auto;
 }
 #button-container{
-    margin-top: 150px;
-    margin-bottom:auto;
+    margin-top: 300px;
+    margin-bottom:50px;
     margin-left:auto;
     margin-right:auto;
     display:table;
@@ -26,6 +25,8 @@ body {
 .text{
     width:450px;
     margin-top:15px;
+    margin-left: auto;
+    margin-right: auto;
     font-size:small;
     font-family:OCR A Std, monospace;
     color:#eaeaead9;
@@ -33,8 +34,8 @@ body {
 }
 #linkbox{
     width: 200px;
-    margin-top: auto;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: auto;
     margin-left: auto;
-    margin-right: 20px;
+    margin-right: auto;
 }
