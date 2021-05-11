@@ -1,0 +1,5 @@
+node_modules
+*.swp
+data.json
+btc_raw.json
+btc.json

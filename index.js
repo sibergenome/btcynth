@@ -21,11 +21,12 @@ var oscilator = new Pizzicato.Sound({
 });
 
 window.onload = async function(){
-    fetch('http://localhost:4000/btc').then(res=>{
-        if (res.ok) return res.json();
+    fetch('./btc').then(async(res)=>{
+        if (res.ok) return await res.json();
         else console.log("BTC req failed: ", res);
     }).then(res => {
-        btc = res.vals;
+        console.log(res)
+        btc = res;
         samp_length = btc.length;
     });
 

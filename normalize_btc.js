@@ -10,4 +10,5 @@ var vals = raw["Data"]["Data"].map((val) => {
     if (val["high"] > max) max = val["high"];
     return val["high"];
 });
-fs.writeFile("btc.json", JSON.stringify(vals), e =>{if(e) console.log(e)});
+var normalized_vals = vals.map( val => val/max)
+fs.writeFile("btc.json", JSON.stringify(normalized_vals), e =>{if(e) console.log(e)});

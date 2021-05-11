@@ -17,6 +17,6 @@ app.get('/', (req, res)=>{
 .get('/btc', (req,res)=>{
     res.json(btc_data);
 })
-.listen(4000, ()=>{
-    console.log('listening on 4000');
+.listen(8080, ()=>{
+    console.log('listening on 8080');
 });
