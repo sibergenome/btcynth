@@ -1,5 +1,5 @@
 #!/bin/bash
-wget -O btc_raw.json "https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=alltime"
+wget -O btc_raw.json "https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=10&allData=true"
 if [[ $? -ne 0 ]]; then
     echo "wget failed: ${$?}"
     exit 1
