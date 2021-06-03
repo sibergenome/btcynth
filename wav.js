@@ -1,9 +1,3 @@
-'use strict';
-var wavesurfer = WaveSurfer.create({
-    container: '#waveform',
-    waveColor: 'violet',
-    progressColor: 'purple'
-});
 fetch('./dogesynth/sample').then((res) => {
     console.log('res')
     console.log(res)
@@ -13,23 +7,19 @@ fetch('./dogesynth/sample').then((res) => {
     console.log(text)
 })
 window.onload = async function(){
-    setSample();
-    setInterval(() => {
-        console.log('new sample')
-        setSample();
-    }, 60*1000)
-
-    //add event listener
+    var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: 'orange',
+        barWidth:1,
+        barGap: 1,
+        progressColor: 'red'
+    });
+    wavesurfer.load('./dogesynth/sample')
     document.getElementById("noisebutton").addEventListener('click', function (){
         if(document.getElementById("noisebutton").innerHTML == "OFF"){
-            document.getElementById("noisebutton").innerHTML = "ON";
-            Pizzicato.context.resume();
-            oscilator.play();
+            wavesurfer.play();
         } else {
-            document.getElementById("noisebutton").innerHTML = "OFF";
-            Pizzicato.context.suspend();
-            oscilator.stop();
-
+            wavesurfer.pause();
         }
     })
 }

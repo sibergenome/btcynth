@@ -62,7 +62,7 @@ app.get('/', (req, res)=>{
     console.log('path' + path.resolve(__dirname, 'wav.html'))
     res.sendFile(path.resolve(__dirname, 'wav.html'));
 })
-.get('/dogesynth/wavesurfer', (r, res) => {
+.get('/dogesynth/index', (r, res) => {
     res.sendFile(path.resolve(__dirname, 'wav.js'));
 })
 .get('/dogesynth/sample', (req, res) => {
