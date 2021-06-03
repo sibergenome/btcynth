@@ -3,10 +3,12 @@ var btc;
 var samp_length;
 var pos = 0;
 function waveform(e){
-    var output = e.outputBuffer.getChannelData(0);
-    for (var i = 0; i < e.outputBuffer.length; i++){
+    var i = 0, output = e.outputBuffer.getChannelData(0);
+    while(i < output.length) {
         output[i] = btc[pos];
-        pos = (pos < samp_length) ? pos+1: 0;
+        if (pos < samp_length) pos = pos+1;
+        else pos = 0;
+        i++;
     }
 }
 var oscilator = new Pizzicato.Sound({
@@ -20,15 +22,31 @@ var oscilator = new Pizzicato.Sound({
     }
 });
 
+const setSample = async () => {
+    // fetch('./btc').then(async(res)=>{
+    //     if (res.ok) return await res.json();
+    //     else console.log("BTC req failed: ", res);
+    // }).then(res => {
+    //     console.log(res)
+    //     btc = res;
+    //     samp_length = btc.length;
+    // });
+    var res = await fetch('./btc');
+    if (!res.ok) {
+        console.log("BTC req failed: ", res);
+        return;
+    }
+    btc = await res.json();
+    console.log(btc)
+    samp_length = btc.length;
+}
+
 window.onload = async function(){
-    fetch('./btc').then(async(res)=>{
-        if (res.ok) return await res.json();
-        else console.log("BTC req failed: ", res);
-    }).then(res => {
-        console.log(res)
-        btc = res;
-        samp_length = btc.length;
-    });
+    setSample();
+    setInterval(() => {
+        console.log('new sample')
+        setSample();
+    }, 60*1000)
 
     //add event listener
     document.getElementById("noisebutton").addEventListener('click', function (){
