@@ -2,11 +2,11 @@
 var btc;
 var samp_length;
 var pos = 0;
-function waveform(e){
+function waveform(e) {
     var i = 0, output = e.outputBuffer.getChannelData(0);
-    while(i < output.length) {
+    while (i < output.length) {
         output[i] = btc[pos];
-        if (pos < samp_length) pos = pos+1;
+        if (pos < samp_length) pos = pos + 1;
         else pos = 0;
         i++;
     }
@@ -23,34 +23,35 @@ var oscilator = new Pizzicato.Sound({
 });
 
 const setSample = async () => {
-    // fetch('./btc').then(async(res)=>{
-    //     if (res.ok) return await res.json();
-    //     else console.log("BTC req failed: ", res);
-    // }).then(res => {
-    //     console.log(res)
-    //     btc = res;
-    //     samp_length = btc.length;
-    // });
     var res = await fetch('./btc');
     if (!res.ok) {
         console.log("BTC req failed: ", res);
         return;
     }
     btc = await res.json();
-    console.log(btc)
     samp_length = btc.length;
 }
 
-window.onload = async function(){
-    setSample();
-    setInterval(() => {
+window.onload = async function () {
+    await setSample();
+    setInterval(async () => {
         console.log('new sample')
-        setSample();
-    }, 60*1000)
+        await setSample();
+    }, 60 * 1000)
+
+    var trace1 = {
+        x: [...Array(1440).keys()],
+        y: btc,
+        type: 'scatter'
+    };
+
+    var data = [trace1];
+
+    // Plotly.newPlot('myChart', data);
 
     //add event listener
-    document.getElementById("noisebutton").addEventListener('click', function (){
-        if(document.getElementById("noisebutton").innerHTML == "OFF"){
+    document.getElementById("noisebutton").addEventListener('click', function () {
+        if (document.getElementById("noisebutton").innerHTML == "OFF") {
             document.getElementById("noisebutton").innerHTML = "ON";
             Pizzicato.context.resume();
             oscilator.play();

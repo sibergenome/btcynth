@@ -1,26 +1,15 @@
-fetch('./dogesynth/sample').then((res) => {
-    console.log('res')
-    console.log(res)
-    return res.text()
-}).then((text) => {
-    console.log('text')
-    console.log(text)
-})
 window.onload = async function(){
     var wavesurfer = WaveSurfer.create({
         container: '#waveform',
-        waveColor: 'orange',
+        waveColor: 'red',
         barWidth:1,
         barGap: 1,
-        progressColor: 'red'
+        progressColor: 'orange'
     });
+    setInterval(() => {wavesurfer.load('./dogesynth/sample')}, 60*1000)
     wavesurfer.load('./dogesynth/sample')
     document.getElementById("noisebutton").addEventListener('click', function (){
-        if(document.getElementById("noisebutton").innerHTML == "OFF"){
-            wavesurfer.play();
-        } else {
-            wavesurfer.pause();
-        }
+        wavesurfer.play();
     })
 }
 
